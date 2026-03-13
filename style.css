@@ -11,15 +11,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    background-color: #000; /* fundo preto */
 }
 
 .container {
-    background-color: #fff;
+    background-color: #111; /* caixa levemente mais clara que o fundo */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     width: 350px;
+    color: #fff;
 }
 
 .form-container {
@@ -29,7 +30,7 @@ body {
 form h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: #fff;
 }
 
 form input {
@@ -37,8 +38,14 @@ form input {
     padding: 12px;
     margin-bottom: 15px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
     outline: none;
+}
+
+form input::placeholder {
+    color: #aaa;
 }
 
 form input:focus {
@@ -64,6 +71,7 @@ form button:hover {
 form p {
     text-align: center;
     margin-top: 15px;
+    color: #ccc;
 }
 
 form p a {
