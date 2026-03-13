@@ -1,34 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
-
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameVerse</title>
+    <title>Cadastro e Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
-
-
 <body>
-<header>O melhor de todos!</header>
+    <div class="container">
+        <div class="form-container" id="cadastro-container">
+            <form id="form-cadastro">
+                <h2>Cadastro</h2>
+                <input type="text" id="nome" placeholder="Nome" required>
+                <input type="email" id="email-cadastro" placeholder="Email" required>
+                <input type="password" id="senha-cadastro" placeholder="Senha" required>
+                <button type="submit">Cadastrar</button>
+                <p>Já tem uma conta? <a href="#" id="btn-login">Entrar</a></p>
+            </form>
+        </div>
 
-<section>
- <div>
-  <h1>Presencie os melhores momentos dos jogos!</h1>
-  <p>Neste site você será bombardeado por cenas épicas de jogos!</p>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/dXl0dzw_XUg?si=HEjwiGPydddkgrCt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <div>
+        <div class="form-container" id="login-container">
+            <form id="form-login">
+                <h2>Login</h2>
+                <input type="email" id="email-login" placeholder="Email" required>
+                <input type="password" id="senha-login" placeholder="Senha" required>
+                <button type="submit">Login</button>
+                <p>Não tem uma conta? <a href="#" id="btn-cadastro">Cadastrar</a></p>
+            </form>
+        </div>
+    </div>
 
+    <script>
+        // Alternar entre cadastro e login
+        const cadastroContainer = document.getElementById('cadastro-container');
+        const loginContainer = document.getElementById('login-container');
+        const btnLogin = document.getElementById('btn-login');
+        const btnCadastro = document.getElementById('btn-cadastro');
+
+        btnLogin.addEventListener('click', () => {
+            cadastroContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        btnCadastro.addEventListener('click', () => {
+            loginContainer.style.display = 'none';
+            cadastroContainer.style.display = 'block';
+        });
+
+        // Simulação de cadastro
+        const formCadastro = document.getElementById('form-cadastro');
+        formCadastro.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email-cadastro').value;
+            const senha = document.getElementById('senha-cadastro').value;
+
+            // Salvar dados no localStorage (simulação)
+            localStorage.setItem('usuario', JSON.stringify({ nome, email, senha }));
+            alert('Cadastro realizado com sucesso!');
+            formCadastro.reset();
+            cadastroContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        // Simulação de login
+        const formLogin = document.getElementById('form-login');
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email-login').value;
+            const senha = document.getElementById('senha-login').value;
+
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            if (usuario && usuario.email === email && usuario.senha === senha) {
+                alert(`Bem-vindo, ${usuario.nome}!`);
+            } else {
+                alert('Email ou senha incorretos!');
+            }
+
+            formLogin.reset();
+        });
+
+        // Inicializa mostrando o cadastro
+        cadastroContainer.style.display = 'block';
+        loginContainer.style.display = 'none';
+    </script>
 </body>
- <h2>Fortnite e muito mais!</h2>
- <p>Tente não rir com essas cenas!</p>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/lm33UXJHn_g?si=WucGM_4aTnZVY3mg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<body>
-<h3> Muitos Risos</h3>
-<p>Jogadores bisonhos</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xugnDeRa9I4?si=TwGxTl_l_NATs5r8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 </html>
