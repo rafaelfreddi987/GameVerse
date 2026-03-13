@@ -1,6 +1,3 @@
-// Inicializa EmailJS (você precisa criar uma conta em https://www.emailjs.com/)
-emailjs.init('SEU_USER_ID'); // Substitua 'SEU_USER_ID' pelo ID da sua conta EmailJS
-
 // Alternar entre cadastro e login
 const cadastroContainer = document.getElementById('cadastro-container');
 const loginContainer = document.getElementById('login-container');
@@ -35,18 +32,7 @@ formCadastro.addEventListener('submit', (e) => {
     usuarios.push({ nome, email, senha });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-    // Envia email de boas-vindas (sem mostrar senha)
-    emailjs.send('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', {
-        to_email: email,
-        to_name: nome,
-        message: `Olá ${nome}, seu cadastro foi realizado com sucesso!`
-    }).then(() => {
-        alert('Cadastro realizado e email enviado com sucesso!');
-    }).catch((err) => {
-        console.error('Erro ao enviar email:', err);
-        alert('Cadastro realizado, mas não foi possível enviar o email.');
-    });
-
+    alert('Cadastro realizado com sucesso! Faça login.');
     formCadastro.reset();
     cadastroContainer.style.display = 'none';
     loginContainer.style.display = 'block';
@@ -64,7 +50,9 @@ formLogin.addEventListener('submit', (e) => {
     const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
     if (usuario) {
-        alert(`Bem-vindo, ${usuario.nome}!`);
+        alert(`Bem-vindo, ${usuario.nome}! Redirecionando para o Instagram...`);
+        // Redireciona para o Instagram
+        window.location.href = 'https://www.instagram.com/';
     } else {
         alert('Email ou senha incorretos!');
     }
